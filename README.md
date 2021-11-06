@@ -83,3 +83,33 @@ What was the volume of orders for each day of the week?
 select WEEKDAY(order_time), COUNT(order_id) from customer_orders
 GROUP BY  WEEKDAY(order_time)
 ```
+
+
+-- B. Runner and Customer Experience
+-- How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
+```sql
+SELECT  COUNT(registration_date) AS weekly_runners, WEEK(registration_date,1) AS week_no 
+FROM runners
+GROUP BY WEEK(registration_date,1)
+
+```
+
+
+-- What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
+```sql
+SELECT AVG(REGEXP_SUBSTR(duration,"[0-9]+")) 
+FROM runner_orders
+```
+
+OR 
+```sql
+SELECT AVG(duration + 0 )
+FROM runner_orders
+```
+-- Is there any relationship between the number of pizzas and how long the order takes to prepare?
+
+
+-- What was the average distance travelled for each customer?
+-- What was the difference between the longest and shortest delivery times for all orders?
+-- What was the average speed for each runner for each delivery and do you notice any trend for these values?
+-- What is the successful delivery percentage for each runner?
